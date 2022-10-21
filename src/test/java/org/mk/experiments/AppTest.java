@@ -12,4 +12,10 @@ public class AppTest {
     public void shouldAnswerWithTrue() {
         assertThat(true).isTrue();
     }
+
+
+    @Test
+    public void aStoryTest() {
+
+    }
 }
