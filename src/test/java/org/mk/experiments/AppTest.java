@@ -16,6 +16,20 @@ public class AppTest {
 
     @Test
     public void aStoryTest() {
+        /*
+        Pewnego dnia
+        grupa przyjaciół: Eve, Yvonne, Adam, Mark, Jack, Mario
+        postanowili zorganizować imprezę: wyprawa na wyspę miłości.
+        Eve wydała 423,00 na jedzenie dla wszystkich.
+        Mark wydał 750,00 na picie dla wszystkich.
+        Jack wydał 330,00 na podróż na miejsce dla: siebie, Eve i Marka.
+        Mario, wydał 370,00 na podróż na miejsce dla: siebie, Yvonne i Adama.
+        Powiedz mi:
+        kto ile na kogo wydał,
+        kto komu ile jest winien,
+        kto ile jest winien Eve i ile ona jest komu winna.
+        Koniec.
+         */
         SplitExpBuilder
                 .oneDay()
                 .aBunchOfFriends("Eve", "Yvonne", "Adam", "Mark", "Jack", "Mario")
