@@ -46,5 +46,32 @@ public class AppTest {
                 .netMatrix()
                 .calculationFor("Eve")
                 .theEnd();
+
+        /*
+        Trades:
+                Total       Eve      Yvonne      Adam      Mark      Jack      Mario
+        Eve       420        70          70        70        70        70         70
+        Mark      840       140         140       140       140       140        140
+        Jack      330       110                             110       110
+        Mario     390                   130       130                            130
+
+        Gross matrix
+                  Eve      Yvonne      Adam      Mark      Jack      Mario
+        Eve         x          70        70        70        70         70
+        Yvonne      0           x         0         0         0          0
+        Adam        0           0         x         0         0          0
+        Mark      140         140       140         x       140        140
+        Jack      110           0         0       110         x          0
+        Mario       0         130       130         0         0          x
+
+        Net matrix
+                  Eve      Yvonne      Adam      Mark      Jack      Mario
+        Eve         x          70        70       -70       -40         70
+        Yvonne    -70           x         0      -140         0       -130
+        Adam      -70           0         x      -140         0       -130
+        Mark       70         140       140         x        30        140
+        Jack       40           0         0       -30         x          0
+        Mario     -70         130       130      -140         0          x
+         */
     }
 }
