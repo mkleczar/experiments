@@ -17,9 +17,6 @@ public class SplitExpExpenseCompleter {
 
     public SplitExpTotalBuilder showMe() {
         eventContext.getExpenses().add(expenseContext);
-
-        // TODO: finalize all calculations
-
         return new SplitExpTotalBuilder(eventContext);
     }
 }
