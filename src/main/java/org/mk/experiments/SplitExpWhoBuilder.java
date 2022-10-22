@@ -1,9 +1,17 @@
 package org.mk.experiments;
 
+import lombok.AllArgsConstructor;
+import org.mk.experiments.context.EventContext;
+
+import java.util.List;
+
+@AllArgsConstructor
 public class SplitExpWhoBuilder {
 
-    public SplitExpEventBuilder aBunchOfFriends(String ... fiends) {
-        // TODO: store fiends somehow
-        return new SplitExpEventBuilder();
+    private EventContext context;
+
+    public SplitExpEventBuilder aBunchOfFriends(String ... friends) {
+        context.setParticipants(List.of(friends));
+        return new SplitExpEventBuilder(context);
     }
 }

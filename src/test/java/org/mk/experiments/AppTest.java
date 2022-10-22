@@ -2,6 +2,10 @@ package org.mk.experiments;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.mk.experiments.financial.Matrix;
+import org.mk.experiments.financial.Transfer;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,8 +46,11 @@ public class AppTest {
                 .next()
                 .teamMember("Mario").spent(Currency.of("390.00")).on("Mario: Travel to destination").onBehalfOf("Mario", "Yvonne", "Adam")
                 .showMe()
-                .grossMatrix()
-                .netMatrix()
+                .eventName(this::nameConsumer)
+                .eventParticipants(this::participantsConsumer)
+                .allTransfers(this::allTransferConsumer)
+                .grossMatrix(this::matrixConsumer)
+                .netMatrix(this::matrixConsumer)
                 .calculationFor("Eve")
                 .theEnd();
 
@@ -73,5 +80,21 @@ public class AppTest {
         Jack       40           0         0       -30         x          0
         Mario     -70         130       130      -140         0          x
          */
+    }
+
+    private void nameConsumer(String name) {
+        log.info("Event name is: {}", name);
+    }
+    private void participantsConsumer(List<String> participants) {
+        log.info("Participants names are: {}", participants);
+    }
+
+    private void allTransferConsumer(List<Transfer> transfers) {
+        transfers.forEach(t -> log.info("{} -> {} -> {} for '{}'",
+                t.getFrom(), t.getAmount(), t.getTo(), t.getDescription()));
+    }
+
+    private void matrixConsumer(Matrix matrix) {
+        log.info("Matrix is: {}", matrix.getMatrix());
     }
 }
