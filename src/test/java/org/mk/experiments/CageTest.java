@@ -64,6 +64,7 @@ public class CageTest {
 
     //private String genericIntroduce(Cage<Mammal> mammalCage) {
     private String genericIntroduce(Cage<? extends Mammal> mammalCage) {
+        Object obj = mammalCage.get();
         return mammalCage.get().whoami();
     }
 
@@ -79,6 +80,7 @@ public class CageTest {
     private String genericIntroduceMisuse(Cage<? extends Mammal> mammalCage) {
         // mammalCage.put(new Dog());
         // mammalCage.put(new Mammal());
+        // mammalCage.put(new Object());
         return mammalCage.get().whoami();
     }
 
@@ -86,5 +88,29 @@ public class CageTest {
     public void genericIntroduceMisuse() {
         Cage<Object> objectCage = new Cage<>();
         //genericIntroduce(objectCage);
+    }
+
+    private void fill(Cage<Mammal> cage) {
+        cage.put(new Dog());
+    }
+    @Test
+    public void fillTest() {
+        fill(new Cage<Mammal>());
+    }
+
+    @Test
+    public void improvedFill(Cage<? super Mammal> cage) {
+        cage.put(new Dog());
+        cage.put(new Mammal());
+        cage.put(new Whale());
+        //cage.put(new Object());
+        //cage.get().whoami();
+    }
+
+    @Test
+    public void improvedFillTest() {
+        improvedFill(new Cage<Mammal>());
+        improvedFill(new Cage<Object>());
+        //improvedFill(new Cage<Dog>());
     }
 }
