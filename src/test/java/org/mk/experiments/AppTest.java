@@ -95,6 +95,6 @@ public class AppTest {
     }
 
     private void matrixConsumer(Matrix matrix) {
-        log.info("Matrix is: {}", matrix.getMatrix());
+        log.info("Matrix is: {}", matrix);
     }
 }
