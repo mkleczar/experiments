@@ -97,4 +97,34 @@ public class AppTest {
     private void matrixConsumer(Matrix matrix) {
         log.info("Matrix is: {}", matrix);
     }
+
+    @Test
+    public void circulationTest() {
+        // TODO: after optimization no cash flow is required to complete payments
+        SplitExpBuilder
+                .oneDay()
+                .aBunchOfFriends("A", "B", "C")
+                .decidedToOrganizeEvent("Dependencies")
+                .teamMember("A").spent(Currency.of("50")).on("Drinks").onBehalfOf("B")
+                .next()
+                .teamMember("B").spent(Currency.of("50")).on("Drinks").onBehalfOf("C")
+                .next()
+                .teamMember("C").spent(Currency.of("50")).on("Drinks").onBehalfOf("A")
+                .showMe()
+                .netMatrix(this::matrixConsumer);
+    }
+
+    @Test
+    public void toReductionTest() {
+        // TODO: two payment should be reduced to single: C->A: 50
+        SplitExpBuilder
+                .oneDay()
+                .aBunchOfFriends("A", "B", "C")
+                .decidedToOrganizeEvent("Dependencies")
+                .teamMember("A").spent(Currency.of("50")).on("Drinks").onBehalfOf("B")
+                .next()
+                .teamMember("B").spent(Currency.of("50")).on("Drinks").onBehalfOf("C")
+                .showMe()
+                .netMatrix(this::matrixConsumer);
+    }
 }
