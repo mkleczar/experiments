@@ -36,7 +36,7 @@ public class Matrix {
                 .computeIfAbsent(left, k -> BigDecimal.ZERO);
 
         matrix.get(left).put(up, current.add(value));
-        matrix.get(up).put(left, reverse.subtract(value));
+        //matrix.get(up).put(left, reverse.subtract(value));
         return this;
     }
 
