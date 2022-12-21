@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 @Getter
@@ -61,13 +62,14 @@ public class Graph<N,V extends Comparable<V>> {
     }
 
     private List<Vertex<V,N>> extractPath(Map<Node<N>, Vertex<V,N>> pathMap, Node<N> from, Node<N> to) {
-        ArrayList<Vertex<V,N>> result = new ArrayList<>();
+        Stack<Vertex<V,N>> result = new Stack<>();
         Node<N> current = to;
         while (!current.equals(from)) {
-            // TODO: ineffective
-            result.add(0, pathMap.get(current));
-            current = pathMap.get(current).getFrom();
+            var v = pathMap.get(current);
+            result.push(v);
+            current = v.getFrom();
         }
+        Collections.reverse(result);
         return result;
 
     }
