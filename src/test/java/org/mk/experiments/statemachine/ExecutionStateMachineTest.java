@@ -17,7 +17,7 @@ public class ExecutionStateMachineTest {
     @Test
     public void eventStateMachineTest() {
 
-        SystemTaskExecutor.Context state = SystemTaskExecutor.Context.builder()
+        Context state = Context.builder()
                 .state("NEW")
                 .count(0)
                 .countLimit(3)
@@ -26,7 +26,7 @@ public class ExecutionStateMachineTest {
                 .build();
         new SystemTaskExecutor().sync(this::task, state);
         log.info("-----");
-        SystemTaskExecutor.Context stateA = SystemTaskExecutor.Context.builder()
+        Context stateA = Context.builder()
                 .state("NEW")
                 .count(0)
                 .countLimit(3)
@@ -35,7 +35,7 @@ public class ExecutionStateMachineTest {
                 .build();
         new SystemTaskExecutor().sync(this::failureTask, stateA);
         log.info("-----");
-        SystemTaskExecutor.Context state2 = SystemTaskExecutor.Context.builder()
+        Context state2 = Context.builder()
                 .state("ERROR")
                 .count(2)
                 .countLimit(3)
@@ -48,7 +48,7 @@ public class ExecutionStateMachineTest {
     @Test
     public void asyncExecutorTest() throws InterruptedException {
 
-        SystemTaskExecutor.Context state = SystemTaskExecutor.Context.builder()
+        Context state = Context.builder()
                 .state("NEW")
                 .count(0)
                 .countLimit(3)
